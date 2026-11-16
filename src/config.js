@@ -18,7 +18,7 @@ const home = os.homedir();
 const localClaude = path.join(home, '.local/bin/claude');
 
 function parsePlaces(v) {
-  // "Name=/path,Other=/other/path" — folders shown in the folder picker
+  // "Name=/path,Other=/other/path": folders shown in the folder picker
   const list = (v || '').split(',').map((s) => s.trim()).filter(Boolean).map((s) => {
     const i = s.indexOf('=');
     return i > 0 ? { name: s.slice(0, i).trim(), path: path.resolve(s.slice(i + 1).trim()) } : { name: path.basename(s) || s, path: path.resolve(s) };

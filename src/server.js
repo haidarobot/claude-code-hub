@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Claude Code Hub — a macOS-style web UI for Claude Code, running on your own server.
+// Claude Code Hub: a macOS-style web UI for Claude Code, running on your own server.
 // Listens on 127.0.0.1 by default. Put it behind a login (AUTH_PASSWORD), your own
 // reverse-proxy auth (AUTH_MODE=proxy), or a private network such as Tailscale.
 import http from 'node:http';

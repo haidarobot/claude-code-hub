@@ -1,7 +1,7 @@
 // Authentication.
-//   password — built-in login page; a signed, HttpOnly cookie keeps you signed in for 30 days.
-//   proxy    — a reverse proxy in front (Caddy forward_auth, Authelia, Cloudflare Access…) already checked the user.
-//   none     — no login; config.js only allows this when listening on localhost.
+//   password: built-in login page; a signed, HttpOnly cookie keeps you signed in for 30 days.
+//   proxy:    a reverse proxy in front (Caddy forward_auth, Authelia, Cloudflare Access…) already checked the user.
+//   none:     no login; config.js only allows this when listening on localhost.
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';

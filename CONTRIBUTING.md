@@ -37,4 +37,4 @@ There is no build step. Edit a file in `public/` and reload the browser; restart
 
 1. In `public/i18n.js`, add a dictionary for your language next to `EN` and pick it in `tr()`.
 2. Add it to the language menu in `public/app.js` (search for `setLang`).
-3. Open a pull request — thank you!
+3. Open a pull request. Thank you!

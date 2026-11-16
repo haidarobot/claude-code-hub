@@ -1,6 +1,6 @@
 # Security
 
-Claude Code Hub gives a browser the power to run Claude Code — and therefore commands — on your machine. Please take security reports seriously, and so will we.
+Claude Code Hub gives a browser the power to run Claude Code, and therefore commands, on your machine. Please take security reports seriously, and so will we.
 
 ## Reporting a vulnerability
 

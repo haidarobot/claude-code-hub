@@ -1,4 +1,4 @@
-// Claude Code Hub — a macOS-style web UI for Claude Code running on your server.
+// Claude Code Hub: a macOS-style web UI for Claude Code running on your server.
 import { tr, translateDom, setLang, LANG, U, plural } from './i18n.js';
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -799,7 +799,7 @@ function drawInspector() {
   box.innerHTML = '';
   if (narrow() || innerWidth <= 1100) box.append(h('div', { style: 'display:flex;justify-content:flex-end;padding:4px 8px 0' }, h('button', { class: 'icon-btn', onclick: () => { document.body.classList.remove('insp'); save('insp', false); } }, icon('x'))));
   box.append(h('div', { class: 'isec' }, h('h4', {}, 'Lingkungan'), h('div', { class: 'kv' },
-    icon('folder'), h('span', { title: c.cwd }, tilde(c.cwd || '—')),
+    icon('folder'), h('span', { title: c.cwd }, tilde(c.cwd || '-')),
     icon('branch'), h('span', {}, S.git?.repo ? S.git.branch || '(detached)' : 'bukan repo git'),
     icon('tool'), h('span', {}, `${modelName(c.model || 'default')} · ${tr(EFFORT[c.effort] || '')}`),
     icon('shield'), h('span', {}, MODES[c.mode]?.label || c.mode || ''),
