@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ececec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1e1e1e" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<title>Claude Code Hub</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body class="login-page">
+  <form id="login" class="login-card" autocomplete="on">
+    <img src="/icon.svg" alt="" width="64" height="64">
+    <h1>Claude Code Hub</h1>
+    <p class="muted">Masuk</p>
+    <input type="text" name="username" autocomplete="username" value="claude-code-hub" hidden>
+    <input id="pw" type="password" name="password" placeholder="Kata sandi" autocomplete="current-password" required autofocus>
+    <div id="err" class="login-err" hidden></div>
+    <button class="btn primary" type="submit">Masuk</button>
+  </form>
+  <script type="module" src="/login.js"></script>
+</body>
+</html>

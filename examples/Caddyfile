@@ -1,0 +1,16 @@
+# Caddy in front of Claude Code Hub, with automatic HTTPS.
+# Keep HOST=127.0.0.1 in .env and set AUTH_PASSWORD (built-in login).
+code.example.com {
+	reverse_proxy 127.0.0.1:3010
+}
+
+# Alternative: let another service handle login (Authelia, Authentik, your own app…)
+# and set AUTH_MODE=proxy in .env.
+#
+# code.example.com {
+# 	forward_auth authelia:9091 {
+# 		uri /api/verify?rd=https://auth.example.com
+# 		copy_headers Remote-User
+# 	}
+# 	reverse_proxy 127.0.0.1:3010
+# }

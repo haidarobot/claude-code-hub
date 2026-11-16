@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="theme-color" content="#ececec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1e1e1e" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Claude Code Hub">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<title>Claude Code Hub</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="app">
+  <aside id="side">
+    <div class="side-top">
+      <div class="lights"><i></i><i></i><i></i></div>
+      <button class="icon-btn" id="sideClose" title="Tutup sidebar"><svg><use href="#i-sidebar"/></svg></button>
+    </div>
+    <button class="side-new" id="newBtn"><svg><use href="#i-compose"/></svg><span>Sesi baru</span></button>
+    <div class="side-search"><svg><use href="#i-search"/></svg><input id="search" placeholder="Cari sesi" autocomplete="off"></div>
+    <nav id="projList" class="scroll"></nav>
+    <div id="usageMini" class="usage-mini" title="Batas pemakaian"></div>
+    <div class="side-foot">
+      <div class="avatar" id="avatar">H</div>
+      <div class="who"><b id="whoName">—</b><span id="whoPlan"></span></div>
+      <button class="icon-btn" id="refreshBtn" title="Pengaturan"><svg><use href="#i-gear"/></svg></button>
+    </div>
+  </aside>
+  <div id="sideScrim"></div>
+
+  <main id="main">
+    <header class="toolbar">
+      <button class="icon-btn" id="sideOpen" title="Sidebar"><svg><use href="#i-sidebar"/></svg></button>
+      <div class="titlebox">
+        <div id="title" class="title">Claude Code</div>
+        <div id="subtitle" class="subtitle"></div>
+      </div>
+      <div class="seg" id="tabs" role="tablist">
+        <button data-tab="chat" class="on" title="Chat"><svg><use href="#i-chat"/></svg><span>Chat</span></button>
+        <button data-tab="files" title="File"><svg><use href="#i-folder"/></svg><span>File</span></button>
+        <button data-tab="git" title="Perubahan"><svg><use href="#i-branch"/></svg><span>Perubahan</span><em id="gitCount"></em></button>
+        <button data-tab="term" title="Terminal"><svg><use href="#i-terminal"/></svg><span>Terminal</span></button>
+      </div>
+      <button class="icon-btn" id="infoBtn" title="Info sesi"><svg><use href="#i-inspector"/></svg></button>
+    </header>
+
+    <section id="view-chat" class="view on">
+      <div id="scroller" class="scroll">
+        <div id="msgs"></div>
+        <div id="empty" class="empty"></div>
+      </div>
+      <button id="toBottom" class="to-bottom" title="Ke bawah"><svg><use href="#i-down"/></svg></button>
+      <div id="dock">
+        <div id="perms"></div>
+        <div id="working" class="working" hidden><span class="spin"></span><span id="workingText">Claude sedang bekerja…</span><span id="workingTime"></span></div>
+        <form id="composer" autocomplete="off">
+          <div id="pop" class="pop" hidden></div>
+          <div id="attach" class="attach"></div>
+          <textarea id="input" rows="1" placeholder="Tanya Claude, / untuk perintah, @ untuk file"></textarea>
+          <div class="comp-row">
+            <button type="button" class="icon-btn" id="attachBtn" title="Lampirkan gambar"><svg><use href="#i-plus"/></svg></button>
+            <input type="file" id="fileInput" accept="image/*" multiple hidden>
+            <button type="button" class="pill" id="modeBtn"></button>
+            <span class="grow"></span>
+            <button type="button" class="pill ghost" id="modelBtn"></button>
+            <button type="submit" class="send" id="sendBtn" title="Kirim (Enter)"><svg><use href="#i-up"/></svg></button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="view-files" class="view">
+      <div class="split">
+        <div class="pane-list">
+          <div class="crumbs" id="fCrumbs"></div>
+          <div id="fList" class="scroll list"></div>
+        </div>
+        <div class="pane-view">
+          <div class="viewer-head" id="fHead"></div>
+          <div id="fView" class="scroll viewer"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-git" class="view">
+      <div class="split">
+        <div class="pane-list">
+          <div class="git-head" id="gHead"></div>
+          <div id="gList" class="scroll list"></div>
+          <div class="commit-box">
+            <textarea id="gMsg" rows="2" placeholder="Pesan commit"></textarea>
+            <button class="btn primary" id="gCommit">Commit</button>
+          </div>
+        </div>
+        <div class="pane-view">
+          <div class="viewer-head" id="dHead"></div>
+          <div id="dView" class="scroll viewer"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-term" class="view"><iframe id="term" title="Terminal"></iframe></section>
+  </main>
+
+  <aside id="inspector" class="scroll"></aside>
+</div>
+
+<div id="sheet" class="sheet" hidden><div class="sheet-card" id="sheetCard"></div></div>
+<div id="menu" class="menu" hidden></div>
+<div id="toast" class="toast" hidden></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-sidebar" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="3"/><path d="M9 4.5v15"/></symbol>
+  <symbol id="i-inspector" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="3"/><path d="M15 4.5v15"/></symbol>
+  <symbol id="i-compose" viewBox="0 0 24 24"><path d="M12 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/><path d="M18.4 2.6a2 2 0 0 1 2.9 2.9L12 14.8 8 16l1.2-4z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.6A8 8 0 1 1 21 12z"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></symbol>
+  <symbol id="i-branch" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="7" r="2"/><path d="M6 7v10M18 9c0 5-6 4-11.5 8.5"/></symbol>
+  <symbol id="i-terminal" viewBox="0 0 24 24"><path d="m5 8 4 4-4 4M12 17h7"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-disk" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M7 14h.01M11 14h6"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 2.5 14.4 0 17M12 3.5c-2.5 2.6-2.5 14.4 0 17"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M9 4h6l-1 6 3 3H7l3-3zM12 13v7"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/><circle cx="19" cy="12" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6z"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+  <symbol id="i-rewind" viewBox="0 0 24 24"><path d="M11 6 5 12l6 6M19 6l-6 6 6 6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
+</svg>
+
+<script src="/vendor/marked.min.js"></script>
+<script src="/vendor/purify.min.js"></script>
+<script type="module" src="/app.js"></script>
+</body>
+</html>
