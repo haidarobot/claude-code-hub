@@ -26,35 +26,35 @@ Your code never leaves your server. No terminal required.
 
 [Claude Code](https://docs.anthropic.com/en/docs/claude-code) is amazing in a terminal, but a terminal is hard to use from a phone, and keeping an SSH session alive is a pain. Claude Code Hub puts the **real Claude Code** (through Anthropic's official [Agent SDK](https://docs.anthropic.com/en/docs/claude-code/sdk)) behind a clean, native‑feeling interface that you open in a browser:
 
-- 🖥️ It **runs on your server** — a home server, a VPS, a Raspberry Pi, your desktop. Claude works on the files that are already there.
-- 📱 It **works great on a phone** — a proper mobile layout, not a squeezed terminal. Add it to your home screen and it feels like an app.
-- 🔁 **Sessions keep running** when you close the tab or lose signal. Come back from any device and pick up exactly where you left off.
-- ✋ **You stay in control** — every command and file edit can show up as a card with *Allow / Always allow / Deny*, with a diff preview.
+- It **runs on your server** — a home server, a VPS, a Raspberry Pi, your desktop. Claude works on the files that are already there.
+- It **works great on a phone** — a proper mobile layout, not a squeezed terminal. Add it to your home screen and it feels like an app.
+- **Sessions keep running** when you close the tab or lose signal. Come back from any device and pick up exactly where you left off.
+- **You stay in control** — every command and file edit can show up as a card with *Allow / Always allow / Deny*, with a diff preview.
 
 ## Features
 
-| | |
+| Feature | What it does |
 |---|---|
-| 💬 **Live chat** | Streaming answers, collapsible "thinking", tool steps grouped like *"3 commands, 2 edits ›"* that you can expand to see every command, output and diff. |
-| ✋ **Permission cards** | Allow, always allow, or deny each action — with an optional reason that is sent back to Claude. Edits show a red/green diff before you approve. |
-| 🗺️ **Plan mode** | Claude researches and writes a plan; you review it as a nicely formatted card and choose *Approve & run*, *Approve, ask for each edit*, or *Keep planning* with feedback. |
-| ❓ **Questions** | When Claude asks you something (multiple choice), you get tappable options plus an "other answer" box. |
-| 🧠 **All the models** | The same model picker as the official app: Default, Opus, Sonnet, Fable, Haiku, **More models ›** (older versions) and **Effort ›** from Low to Max. Switch mid‑conversation. |
-| 🛡️ **Permission modes** | Ask first · Accept edits · Plan · Auto (classifier) · Bypass (with a warning). `Shift+Tab` cycles like the CLI. |
-| 📊 **Usage limits** | Your plan's 5‑hour and weekly limits with reset times, right in the sidebar — no more guessing. Plus a context‑window breakdown (system prompt, tools, MCP, messages…) and per‑session totals. |
-| 📁 **Finder‑style folder picker** | Pick any folder on the server as a project. Pin your favourites. Add your own locations (disks, web roots…). |
-| 🗂️ **Sessions** | Every conversation is saved (it's the normal Claude Code history, so the CLI sees them too). Search, rename, delete, resume. Status dots show which sessions are working or waiting for you. |
-| 🌿 **Changes tab** | `git status` + a diff of every changed file, recent commits, and a commit box. |
-| 📄 **Files tab** | Browse the project, preview code (with line numbers), Markdown and images, and **@mention** a file in chat with one tap. |
-| ⏪ **Restore files** | Roll the project's files back to the moment before any of your messages (uses Claude Code's file checkpoints). |
-| 🖼️ **Images** | Paste, drop or attach screenshots. Large images are resized in the browser to save tokens. |
-| ⌨️ **Slash commands & @files** | `/` autocompletes every command and skill Claude Code knows; `@` searches files in the project. |
-| 🔔 **Notifications** | Get a Telegram, [ntfy](https://ntfy.sh) or custom notification when Claude needs permission or finishes a long task while you're away. Browser notifications too (over HTTPS). |
-| 🖥️ **Terminal tab** *(optional)* | Embed any web terminal (e.g. [ttyd](https://github.com/tsl0922/ttyd)) as a tab. |
-| 🌗 **Light & dark** | Follows your system. SF Pro typography, vibrancy sidebar, segmented controls — it looks and feels like a Mac app. |
-| 🌐 **English & Indonesian** | Picks your browser language; switch any time in ⚙️ Settings. Translations are one small file — PRs for more languages welcome! |
-| 🔐 **Built‑in login** | Password login with a signed, HttpOnly cookie — or plug it behind your own reverse‑proxy auth. Refuses to start exposed without auth. |
-| 🪶 **Tiny** | ~2,500 lines of plain JavaScript. No framework, no build step, 4 dependencies. |
+| **Live chat** | Streaming answers, collapsible "thinking", tool steps grouped like *"3 commands, 2 edits ›"* that you can expand to see every command, output and diff. |
+| **Permission cards** | Allow, always allow, or deny each action — with an optional reason that is sent back to Claude. Edits show a red/green diff before you approve. |
+| **Plan mode** | Claude researches and writes a plan; you review it as a nicely formatted card and choose *Approve & run*, *Approve, ask for each edit*, or *Keep planning* with feedback. |
+| **Questions** | When Claude asks you something (multiple choice), you get tappable options plus an "other answer" box. |
+| **All the models** | The same model picker as the official app: Default, Opus, Sonnet, Fable, Haiku, **More models ›** (older versions) and **Effort ›** from Low to Max. Switch mid‑conversation. |
+| **Permission modes** | Ask first · Accept edits · Plan · Auto (classifier) · Bypass (with a warning). `Shift+Tab` cycles like the CLI. |
+| **Usage limits** | Your plan's 5‑hour and weekly limits with reset times, right in the sidebar — no more guessing. Plus a context‑window breakdown (system prompt, tools, MCP, messages…) and per‑session totals. |
+| **Finder‑style folder picker** | Pick any folder on the server as a project. Pin your favourites. Add your own locations (disks, web roots…). |
+| **Sessions** | Every conversation is saved (it's the normal Claude Code history, so the CLI sees them too). Search, rename, delete, resume. Status dots show which sessions are working or waiting for you. |
+| **Changes tab** | `git status` + a diff of every changed file, recent commits, and a commit box. |
+| **Files tab** | Browse the project, preview code (with line numbers), Markdown and images, and **@mention** a file in chat with one tap. |
+| **Restore files** | Roll the project's files back to the moment before any of your messages (uses Claude Code's file checkpoints). |
+| **Images** | Paste, drop or attach screenshots. Large images are resized in the browser to save tokens. |
+| **Slash commands & @files** | `/` autocompletes every command and skill Claude Code knows; `@` searches files in the project. |
+| **Notifications** | Get a Telegram, [ntfy](https://ntfy.sh) or custom notification when Claude needs permission or finishes a long task while you're away. Browser notifications too (over HTTPS). |
+| **Terminal tab** *(optional)* | Embed any web terminal (e.g. [ttyd](https://github.com/tsl0922/ttyd)) as a tab. |
+| **Light & dark** | Follows your system. SF Pro typography, vibrancy sidebar, segmented controls — it looks and feels like a Mac app. |
+| **English & Indonesian** | Picks your browser language; switch any time in Settings. Translations are one small file — PRs for more languages welcome! |
+| **Built‑in login** | Password login with a signed, HttpOnly cookie — or plug it behind your own reverse‑proxy auth. Refuses to start exposed without auth. |
+| **Tiny** | ~2,500 lines of plain JavaScript. No framework, no build step, 4 dependencies. |
 
 ## Screenshots
 
@@ -240,7 +240,7 @@ Yes! Add your strings to [`public/i18n.js`](public/i18n.js) and open a pull requ
 
 ## Contributing
 
-Issues and pull requests are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). If this project helps you, a ⭐ helps other people find it.
+Issues and pull requests are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). If this project helps you, a helps other people find it.
 
 ## License
 
